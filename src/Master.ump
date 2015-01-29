@@ -1,0 +1,5 @@
+
+generate Java "../src-gen-umple";
+use Downloader.ump;
+use Downloader_Code.ump;
+use DlprojMain.ump;

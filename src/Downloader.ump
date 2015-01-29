@@ -1,0 +1,21 @@
+namespace dlproj;
+
+class Project
+{
+  String name;
+  Date lastUpdated = null;
+  String codeLocation = null;
+}
+
+class GitProject
+{
+  String[] tagList;
+  isA Project;
+}
+
+class ProjectArchive
+{
+  String[] projectList;
+  Date lastUpdated;
+  1 -> * Project;
+}
