@@ -3,13 +3,14 @@ namespace dlproj;
 class Project
 {
   String name;
+  String codeLocation;
   Date lastUpdated = null;
-  String codeLocation = null;
 }
 
 class GitProject
 {
   String[] tagList;
+  String gitPath;
   isA Project;
 }
 

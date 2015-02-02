@@ -18,8 +18,16 @@ class Project
 
 class GitProject
 {
-  public void Download(String version)
+  depend java.io.File;
+  depend java.io.IOException;
+
+  depend org.eclipse.jgit.api.*;
+  depend org.eclipse.jgit.api.errors.*;
+
+  public void Download(String version) throws IOException, GitAPIException 
   {
+    //TODO: User version to pull specific tag
+    Git.cloneRepository().setURI(gitPath).setDirectory(new File(this.getCodeLocation())).call();
   }
 
   public void toJSON()

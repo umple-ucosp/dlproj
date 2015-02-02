@@ -18,7 +18,7 @@ public class ProjectTest
   @Test
   public void constructor()
   {
-    Assert.assertEquals("myp", new Project("myp").getName());
+    Assert.assertEquals("myp", new Project("myp", "/home/temp").getName());
   }
 
 }
