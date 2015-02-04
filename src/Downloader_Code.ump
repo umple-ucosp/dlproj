@@ -19,10 +19,13 @@ class Project
 class GitProject
 {
   depend java.io.File;
+  depend java.nio.file.Files;
+  depend java.nio.file.Paths;
   depend java.io.IOException;
 
   depend org.eclipse.jgit.api.*;
   depend org.eclipse.jgit.api.errors.*;
+  depend com.jcraft.jsch.*;
 
   public void Download(String version) throws IOException, GitAPIException 
   {

@@ -25,6 +25,7 @@
   <path id="project.classpath">
     <pathelement location="${bin.path}"/>
     <pathelement location="lib/org.eclipse.jgit-3.6.2.201501210735-r.jar"/>
+    <pathelement location="lib/jsch-0.1.51.jar"/>
     <path refid="junit4.classpath"/>
   </path>
 
