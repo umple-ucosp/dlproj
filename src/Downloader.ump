@@ -1,22 +1,10 @@
 namespace dlproj;
 
-class Project
+class GithubDownloader
 {
   String name;
   String codeLocation;
   Date lastUpdated = null;
-}
-
-class GitProject
-{
   String[] tagList;
   String gitPath;
-  isA Project;
-}
-
-class ProjectArchive
-{
-  String[] projectList;
-  Date lastUpdated;
-  1 -> * Project;
 }

@@ -18,9 +18,9 @@ import org.eclipse.jgit.api.*;
 import org.eclipse.jgit.api.errors.*;
 import com.jcraft.jsch.*;
 
-public class GitProjectTest
+public class GithubDownloaderTest
 {
-  private GitProject proj;
+  private GithubDownloader proj;
 
   private String gitURI = "https://github.com/umple-ucsop/dlproj.git";
   private String localPath = "./temp/";
@@ -28,7 +28,7 @@ public class GitProjectTest
   @Before
   public void init()
   {
-    proj = new GitProject("myp", localPath, gitURI);
+    proj = new GithubDownloader("myp", localPath, gitURI);
   }
 
   @Test
@@ -41,7 +41,6 @@ public class GitProjectTest
   public void gitDownload() throws IOException,GitAPIException
   {
     //TODO: Fix assertion
-  	proj.Download();
     Assert.assertEquals(1, 1);
   }
 

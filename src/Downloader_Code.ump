@@ -1,22 +1,6 @@
 namespace dlproj;
 
-class Project
-{
-  public void Update()
-  {
-  }
-
-  public void Download()
-  {
-  }
-
-  public void toJSON()
-  {
-  }
-
-}
-
-class GitProject
+class GithubDownloader
 {
   depend java.io.File;
   depend java.nio.file.Files;
@@ -27,37 +11,9 @@ class GitProject
   depend org.eclipse.jgit.api.errors.*;
   depend com.jcraft.jsch.*;
 
-  public void Download(String version) throws IOException, GitAPIException 
+  public void Download() throws IOException, GitAPIException 
   {
     //TODO: User version to pull specific tag
     Git.cloneRepository().setURI(gitPath).setDirectory(new File(this.getCodeLocation())).call();
-  }
-
-  public void toJSON()
-  {
-  }
-}
-
-class ProjectArchive
-{
-
-  public void addProject()
-  {
-  }
-
-  public void updateProject()
-  {
-  }
-
-  public void removeProject()
-  {
-  }
-
-  private void writeToFile()
-  {
-  }
-
-  private void loadFromFile()
-  {
   }
 }
