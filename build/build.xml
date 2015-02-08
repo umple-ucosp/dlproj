@@ -26,6 +26,7 @@
     <pathelement location="${bin.path}"/>
     <pathelement location="lib/org.eclipse.jgit-3.6.2.201501210735-r.jar"/>
     <pathelement location="lib/jsch-0.1.51.jar"/>
+    <pathelement location="lib/jopt-simple-3.2-rc1.jar"/>
     <path refid="junit4.classpath"/>
   </path>
 
@@ -105,13 +106,16 @@
     <echo message="Package Version: ${umple.version}" />
     <echo message="Package: Umple statistics jar" />
     <echo message="Package: Main command line jar" />
-    <property name="main_classpath" value=" " />
+    <property name="main_classpath" value="lib/*.jar" />
+    <manifestclasspath property="lib.list" jarfile="dist/dlproj.jar">
+      <classpath refid="project.classpath"/>
+    </manifestclasspath>
     <jar destfile="dist/dlproj.jar" basedir="${bin.path}" includes="dlproj/**" excludes="**/*Test.class">
       <manifest>
         <attribute name="Built-By" value="Cruise - University of Ottawa"/>
         <attribute name="Version" value="${umple.version}"/>
         <attribute name="Main-Class" value="dlproj.DlprojMain"/>
-        <attribute name="Class-Path" value="${main_classpath}"/>
+        <attribute name="Class-Path" value="${lib.list}"/>
       </manifest>
     </jar>
   </target>

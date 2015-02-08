@@ -2,11 +2,54 @@ namespace dlproj;
 
 class DlprojMain
 {
+  depend java.util.List;
+  depend java.io.IOException;
+
+  depend dlproj.GithubDownloader;
+
+  depend org.eclipse.jgit.api.errors.*;
+
+  depend joptsimple.OptionParser;
+  depend joptsimple.OptionSet;	
+
   public static void main(String[] args)
   {
+  	OptionParser parser = new OptionParser( "d:" );
+  	OptionSet options = parser.parse(args);
+  	List<String> nonOptions = options.nonOptionArguments();
+    String localPath;
+    String githubProject;
+    String projectBranch;
+
     System.out.print("==============\n");
     System.out.print("=== DLPROJ ===\n");
     System.out.print("==============\n");
     System.out.print("\n");
+
+    if (options.hasArgument("d"))
+      localPath = (String) options.valueOf("d");
+    else
+      localPath = System.getProperty("user.dir");
+
+    if (nonOptions.size() == 2)
+    {
+      githubProject = nonOptions.get(0);
+      projectBranch = nonOptions.get(1);
+
+      try {
+        GithubDownloader downloader = new GithubDownloader(githubProject, projectBranch, localPath);
+        downloader.Download();
+      }
+      catch (IOException e) {
+        System.err.println("Caught IOException: " + e.getMessage());
+      }
+      catch (GitAPIException e) {
+        System.err.println("Caught GitAPIException: " + e.getMessage());
+      }
+    }
+    else
+    {
+      System.out.println("Incorrect input");
+    }
   }
 }

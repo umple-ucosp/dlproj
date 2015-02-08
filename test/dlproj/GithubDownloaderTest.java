@@ -22,19 +22,20 @@ public class GithubDownloaderTest
 {
   private GithubDownloader proj;
 
-  private String gitURI = "https://github.com/umple-ucsop/dlproj.git";
+  private String branch = "branch";
   private String localPath = "./temp/";
+  private String projectName = "myp";
 
   @Before
   public void init()
   {
-    proj = new GithubDownloader("myp", localPath, gitURI);
+    proj = new GithubDownloader(projectName, branch, localPath);
   }
 
   @Test
   public void constructor()
   {
-    Assert.assertEquals("myp", proj.getName());
+    Assert.assertEquals(projectName, proj.getProjectName());
   }
 
   @Test

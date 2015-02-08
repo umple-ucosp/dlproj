@@ -2,9 +2,7 @@ namespace dlproj;
 
 class GithubDownloader
 {
-  String name;
-  String codeLocation;
-  Date lastUpdated = null;
-  String[] tagList;
-  String gitPath;
+  String projectName;
+  String projectBranch;
+  String localPath;
 }

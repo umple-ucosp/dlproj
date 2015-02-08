@@ -14,6 +14,10 @@ class GithubDownloader
   public void Download() throws IOException, GitAPIException 
   {
     //TODO: User version to pull specific tag
-    Git.cloneRepository().setURI(gitPath).setDirectory(new File(this.getCodeLocation())).call();
+    //Git.cloneRepository().setURI(gitPath).setDirectory(new File(this.getCodeLocation())).call();
+    System.out.println("==Download==");
+    System.out.println("Project: " + this.getProjectName());
+    System.out.println("Branch: " + this.getProjectBranch());
+    System.out.println("LocalPath: " + this.getLocalPath());
   }
 }
