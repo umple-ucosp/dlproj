@@ -11,13 +11,8 @@ class GithubDownloader
   depend org.eclipse.jgit.api.errors.*;
   depend com.jcraft.jsch.*;
 
-  public void Download() throws IOException, GitAPIException 
+  public void download() throws IOException, GitAPIException 
   {
-    //TODO: User version to pull specific tag
-    //Git.cloneRepository().setURI(gitPath).setDirectory(new File(this.getCodeLocation())).call();
-    System.out.println("==Download==");
-    System.out.println("Project: " + this.getProjectName());
-    System.out.println("Branch: " + this.getProjectBranch());
-    System.out.println("LocalPath: " + this.getLocalPath());
+    Git.cloneRepository().setURI(getGithubUrl()).setDirectory(new File(getDownloadDir())).call();
   }
 }

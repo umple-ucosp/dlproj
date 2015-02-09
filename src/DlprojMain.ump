@@ -38,7 +38,7 @@ class DlprojMain
 
       try {
         GithubDownloader downloader = new GithubDownloader(githubProject, projectBranch, localPath);
-        downloader.Download();
+        downloader.download();
       }
       catch (IOException e) {
         System.err.println("Caught IOException: " + e.getMessage());
