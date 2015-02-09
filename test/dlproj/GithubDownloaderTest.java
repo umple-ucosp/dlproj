@@ -28,22 +28,10 @@ public class GithubDownloaderTest
   private String localPath = "./tmp/";
   private String projectName = "myp";
   
-  private void cleanup()
-  {
-    try
-    {
-      Runtime.getRuntime().exec("rm -rf ./tmp/umple-ucsop");
-    }
-    catch (IOException e)
-    {
-      Assert.fail("Unable to cleanup ./tmp/umple-ucsop");
-    }
-  }
-  
   @Before
   public void init()
   {
-    cleanup();
+    Helper.cleanup();
     proj = new GithubDownloader(projectName, branch, localPath);
     sample = new GithubDownloader("umple-ucsop/umple.sample.downloader", "master", "./tmp");
   }
@@ -51,7 +39,7 @@ public class GithubDownloaderTest
   @After
   public void teardown()
   {
-    cleanup();
+    Helper.cleanup();
   }
 
   @Test
