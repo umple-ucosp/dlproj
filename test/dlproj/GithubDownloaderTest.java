@@ -19,21 +19,23 @@ import org.eclipse.jgit.api.errors.*;
 
 import com.jcraft.jsch.*;
 
+import static dlproj.Helper.LOCAL_DOWNLOAD_DIRECTORY;
+import static dlproj.Helper.SAMPLE_PROJECT_NAME;
+import static dlproj.Helper.SAMPLE_PROJECT_BRANCH;
+import static dlproj.Helper.SAMPLE_PROJECT_LOCAL_README;
+import static dlproj.Helper.SAMPLE_PROJECT_LOCAL_DIRECTORY;
+import static dlproj.Helper.SAMPLE_PROJECT_GITHUB_URL;
+
 public class GithubDownloaderTest
 {
   private GithubDownloader proj;
   private GithubDownloader sample;
-
-  private String branch = "branch";
-  private String localPath = "./tmp/";
-  private String projectName = "myp";
   
   @Before
   public void init()
   {
     Helper.cleanup();
-    proj = new GithubDownloader(projectName, branch, localPath);
-    sample = new GithubDownloader("umple-ucsop/umple.sample.downloader", "master", "./tmp");
+    sample = new GithubDownloader(SAMPLE_PROJECT_NAME, SAMPLE_PROJECT_BRANCH, LOCAL_DOWNLOAD_DIRECTORY);
   }
   
   @After
@@ -45,24 +47,24 @@ public class GithubDownloaderTest
   @Test
   public void constructor()
   {
-    Assert.assertEquals(projectName, proj.getProjectName());
+    Assert.assertEquals(SAMPLE_PROJECT_NAME, sample.getProjectName());
   }
 
   @Test
   public void properties()
   {
-    Assert.assertEquals("https://github.com/umple-ucsop/umple.sample.downloader.git", sample.getGithubUrl());
-    Assert.assertEquals("umple-ucsop/umple.sample.downloader", sample.getProjectName());
-    Assert.assertEquals("master", sample.getProjectBranch());
-    Assert.assertEquals("./tmp", sample.getLocalPath());
-    Assert.assertEquals("./tmp/umple-ucsop/umple.sample.downloader/master", sample.getDownloadDir());
+    Assert.assertEquals(SAMPLE_PROJECT_GITHUB_URL, sample.getGithubUrl());
+    Assert.assertEquals(SAMPLE_PROJECT_NAME, sample.getProjectName());
+    Assert.assertEquals(SAMPLE_PROJECT_BRANCH, sample.getProjectBranch());
+    Assert.assertEquals(LOCAL_DOWNLOAD_DIRECTORY, sample.getLocalPath());
+    Assert.assertEquals(SAMPLE_PROJECT_LOCAL_DIRECTORY, sample.getDownloadDir());
   }
 
   @Test
   public void gitDownload() throws IOException,GitAPIException
   {
 	  sample.download();
-	  Assert.assertEquals(true, (new File("./tmp/umple-ucsop/umple.sample.downloader/master/README.md").exists()));
+	  Assert.assertEquals(true, (new File(SAMPLE_PROJECT_LOCAL_README).exists()));
   }
 
 }
