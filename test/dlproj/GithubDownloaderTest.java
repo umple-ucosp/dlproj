@@ -52,14 +52,14 @@ public class GithubDownloaderTest
     Assert.assertEquals("umple-ucosp/dlproj.test", sample.getProjectName());
     Assert.assertEquals("master", sample.getProjectBranch());
     Assert.assertEquals(LOCAL_DOWNLOAD_DIRECTORY, sample.getLocalPath());
-    Assert.assertEquals(LOCAL_DOWNLOAD_DIRECTORY + "/umple-ucosp/dlproj.test/master", sample.getDownloadDir());
+    Assert.assertEquals(LOCAL_DOWNLOAD_DIRECTORY + "/umple-ucosp/dlproj.test/master/src", sample.getDownloadDir());
   }
 
   @Test
   public void gitDownload() throws IOException,GitAPIException
   {
 	  sample.download();
-	  Assert.assertEquals(true, (new File(LOCAL_DOWNLOAD_DIRECTORY + "/umple-ucosp/dlproj.test/master/README.md").exists()));
+	  Assert.assertEquals(true, (new File(LOCAL_DOWNLOAD_DIRECTORY + "/umple-ucosp/dlproj.test/master/src/README.md").exists()));
   }
 
 }

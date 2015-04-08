@@ -7,5 +7,5 @@ class GithubDownloader
   String localPath;
 
   String githubUrl = { "https://github.com/" + projectName + ".git" };
-  String downloadDir = { localPath + File.separator + projectName + File.separator + projectBranch };
+  String downloadDir = { localPath + File.separator + projectName + File.separator + projectBranch + File.separator + "src" };
 }

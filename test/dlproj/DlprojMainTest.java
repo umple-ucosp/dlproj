@@ -40,7 +40,7 @@ public class DlprojMainTest
   public void gitDownload() throws IOException,GitAPIException
   {
     DlprojMain.main(new String[] { "-d", LOCAL_DOWNLOAD_DIRECTORY, "umple-ucosp/dlproj.test", "master" });
-	  Assert.assertEquals(true, (new File(LOCAL_DOWNLOAD_DIRECTORY + "/umple-ucosp/dlproj.test/master/README.md").exists()));
+	  Assert.assertEquals(true, (new File(LOCAL_DOWNLOAD_DIRECTORY + "/umple-ucosp/dlproj.test/master/src/README.md").exists()));
   }
 
 }
