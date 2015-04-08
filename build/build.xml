@@ -6,7 +6,7 @@
     Environment Variables
   ``````````````````````````` -->
 
-  <property name="haltonfailure" value="true"/>
+  <property name="haltonfailure" value="false"/>
   <property name="shouldDeploy" value="true"/>
   <property name="showJunitSummary" value="false"/>
   <property name="showJunitOutput" value="false"/>
@@ -37,6 +37,9 @@
 
   <target name="clean">
     <delete dir="${project.path}/src-gen-umple" failonerror="false" />
+    <delete dir="${project.path}/dist" failonerror="false" />
+    <delete dir="${project.path}/bin" failonerror="false" />
+    <delete file="${project.path}/lib/dlproj.jar" failonerror="false" />
   </target>
 
   <target name="init">
