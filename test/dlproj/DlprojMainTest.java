@@ -20,9 +20,6 @@ import org.eclipse.jgit.api.errors.*;
 import com.jcraft.jsch.*;
 
 import static dlproj.Helper.LOCAL_DOWNLOAD_DIRECTORY;
-import static dlproj.Helper.SAMPLE_PROJECT_NAME;
-import static dlproj.Helper.SAMPLE_PROJECT_BRANCH;
-import static dlproj.Helper.SAMPLE_PROJECT_LOCAL_README;
 
 public class DlprojMainTest
 {
@@ -42,8 +39,8 @@ public class DlprojMainTest
   @Test
   public void gitDownload() throws IOException,GitAPIException
   {
-    DlprojMain.main(new String[] { "-d", LOCAL_DOWNLOAD_DIRECTORY, SAMPLE_PROJECT_NAME, SAMPLE_PROJECT_BRANCH });
-	  Assert.assertEquals(true, (new File(SAMPLE_PROJECT_LOCAL_README).exists()));
+    DlprojMain.main(new String[] { "-d", LOCAL_DOWNLOAD_DIRECTORY, "umple-ucosp/dlproj.test", "master" });
+	  Assert.assertEquals(true, (new File(LOCAL_DOWNLOAD_DIRECTORY + "/umple-ucosp/dlproj.test/master/README.md").exists()));
   }
 
 }

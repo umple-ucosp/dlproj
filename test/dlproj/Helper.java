@@ -40,11 +40,7 @@ public final class Helper
   }
 
   public static final String LOCAL_DOWNLOAD_DIRECTORY = "./tmp";
-  public static final String SAMPLE_PROJECT_NAME = "umple-ucsop/umple.sample.downloader";
-  public static final String SAMPLE_PROJECT_BRANCH = "master";
-  public static final String SAMPLE_PROJECT_LOCAL_README = "./tmp/umple-ucsop/umple.sample.downloader/master/README.md";
-  public static final String SAMPLE_PROJECT_LOCAL_DIRECTORY = "./tmp/umple-ucsop/umple.sample.downloader/master";
-  public static final String SAMPLE_PROJECT_GITHUB_URL = "https://github.com/umple-ucsop/umple.sample.downloader.git";
+  public static final String SAMPLE_PROJECT_LOCAL_DIRECTORY = "./tmp/umple-ucosp/dlproj.test/master";
 }
 
 
