@@ -49,7 +49,10 @@ class DlprojMain
     }
     else
     {
-      System.out.println("Incorrect input");
+      System.out.println("Incorrect input...");
+      System.out.println("Usage:");
+      System.out.println("\tjava -jar dlproj.jar <github_project> <branch> [-d <local_path>]");
+      System.out.println("");
     }
   }
 }
