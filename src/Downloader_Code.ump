@@ -61,15 +61,6 @@ class GithubDownloader
     return ref.getName().split("/")[2];
   }
 
-  private RevCommit getCommitFromRef(Ref ref) throws MissingObjectException, IOException
-  {
-    ObjectId commitId = ref.getObjectId();
-    RevWalk revwalk = new RevWalk(new FileRepository(generateRepoPath("tip") + "/.git"));
-    RevCommit commit = revwalk.parseCommit(commitId);
-    revwalk.dispose();
-    return commit;
-  }
-
   private String generateRepoPath(String verName)
   {
     return localPath + File.separator + projectName + File.separator + projectBranch + 

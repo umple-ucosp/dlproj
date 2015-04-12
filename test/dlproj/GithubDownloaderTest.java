@@ -57,7 +57,6 @@ public class GithubDownloaderTest
     Assert.assertEquals("umple-ucosp/dlproj.test", proj.getProjectName());
     Assert.assertEquals("master", proj.getProjectBranch());
     Assert.assertEquals(LOCAL_DOWNLOAD_DIRECTORY, proj.getLocalPath());
-    Assert.assertEquals(LOCAL_DOWNLOAD_DIRECTORY + "/umple-ucosp/dlproj.test/master/src", proj.getDownloadDir());
   }
 
   @Test
