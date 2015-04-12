@@ -40,7 +40,6 @@ public final class Helper
   }
 
   public static final String LOCAL_DOWNLOAD_DIRECTORY = "./tmp";
-  public static final String SAMPLE_PROJECT_LOCAL_DIRECTORY = "./tmp/umple-ucosp/dlproj.test/master";
 }
 
 

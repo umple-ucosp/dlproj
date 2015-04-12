@@ -27,6 +27,7 @@
     <pathelement location="lib/org.eclipse.jgit-3.6.2.201501210735-r.jar"/>
     <pathelement location="lib/jsch-0.1.51.jar"/>
     <pathelement location="lib/jopt-simple-3.2-rc1.jar"/>
+    <pathelement location="lib/commons-io-2.4.jar"/>
     <path refid="junit4.classpath"/>
   </path>
 

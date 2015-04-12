@@ -3,16 +3,76 @@ namespace dlproj;
 class GithubDownloader
 {
   depend java.io.File;
+  depend org.apache.commons.io.FileUtils;
+  depend java.util.List;
+  depend java.util.ArrayList;
   depend java.nio.file.Files;
   depend java.nio.file.Paths;
   depend java.io.IOException;
 
   depend org.eclipse.jgit.api.*;
+  depend org.eclipse.jgit.errors.*;
   depend org.eclipse.jgit.api.errors.*;
+  depend org.eclipse.jgit.revwalk.*;
+  depend org.eclipse.jgit.lib.*;
+  depend org.eclipse.jgit.internal.storage.file.FileRepository;
   depend com.jcraft.jsch.*;
 
   public void download() throws IOException, GitAPIException 
   {
-    Git.cloneRepository().setURI(getGithubUrl()).setDirectory(new File(getDownloadDir())).call();
+    download(5); // The default number of tags to download is 5
+  }
+
+  public void download(int maxTags) throws IOException, GitAPIException 
+  {
+    Git.cloneRepository().setURI(getGithubUrl()).setDirectory(new File(generateRepoPath("tip"))).call();
+    List<Ref> tags = getTags();
+
+    // Ensure that the tags list contains no more tags than specified by 'maxTags', and
+    // that it picks the most recent tags.
+    tags = (tags.size() > maxTags) ? tags.subList(tags.size()-maxTags, tags.size()): tags;
+
+    for (Ref ref : tags) 
+    {
+      newRepoAtRef(ref);
+    }
+  }
+
+  private List<Ref> getTags() throws IOException, GitAPIException
+  {
+    Git git = new Git(new FileRepository(generateRepoPath("tip") + "/.git"));
+    return git.tagList().call();
+  }
+
+  private void newRepoAtRef(Ref ref) throws IOException, GitAPIException
+  {
+    String versionName = getTagNameFromRef(ref);
+    File srcPath = new File(generateRepoPath("tip"));
+    File destPath = new File(generateRepoPath(versionName));
+
+    FileUtils.copyDirectory(srcPath, destPath);
+
+    Git git = new Git(new FileRepository(generateRepoPath(versionName) + "/.git"));
+    git.checkout().setName(versionName).call();
+  }
+
+  private String getTagNameFromRef(Ref ref)
+  {
+    return ref.getName().split("/")[2];
+  }
+
+  private RevCommit getCommitFromRef(Ref ref) throws MissingObjectException, IOException
+  {
+    ObjectId commitId = ref.getObjectId();
+    RevWalk revwalk = new RevWalk(new FileRepository(generateRepoPath("tip") + "/.git"));
+    RevCommit commit = revwalk.parseCommit(commitId);
+    revwalk.dispose();
+    return commit;
+  }
+
+  private String generateRepoPath(String verName)
+  {
+    return localPath + File.separator + projectName + File.separator + projectBranch + 
+            File.separator + verName + File.separator + "src";
   }
 }
