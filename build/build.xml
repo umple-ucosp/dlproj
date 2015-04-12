@@ -110,16 +110,15 @@
     <echo message="Package Version: ${umple.version}" />
     <echo message="Package: Umple statistics jar" />
     <echo message="Package: Main command line jar" />
-    <property name="main_classpath" value="lib/*.jar" />
-    <manifestclasspath property="lib.list" jarfile="dist/dlproj.jar">
-      <classpath refid="project.classpath"/>
-    </manifestclasspath>
     <jar destfile="dist/dlproj.jar" basedir="${bin.path}" includes="dlproj/**" excludes="**/*Test.class">
+      <zipfileset excludes="META-INF/*.SF" src="lib/org.eclipse.jgit-3.6.2.201501210735-r.jar"/>
+      <zipfileset excludes="META-INF/*.SF" src="lib/jopt-simple-3.2-rc1.jar"/>
+      <zipfileset excludes="META-INF/*.SF" src="lib/jsch-0.1.51.jar"/>
+      <zipfileset excludes="META-INF/*.SF" src="lib/commons-io-2.4.jar"/>
       <manifest>
         <attribute name="Built-By" value="Cruise - University of Ottawa"/>
         <attribute name="Version" value="${umple.version}"/>
         <attribute name="Main-Class" value="dlproj.DlprojMain"/>
-        <attribute name="Class-Path" value="${lib.list}"/>
       </manifest>
     </jar>
   </target>
@@ -129,7 +128,6 @@
   ``````````````````````````` -->
 
   <target name="deploy">
-    <copy file="dist/dlproj.jar" tofile="lib/dlproj.jar" overwrite="true" />
   </target>
 
   <!-- ```````````````````````````
